@@ -53,6 +53,7 @@ func scanFile(path string) ([]Finding, error) {
 					Line:  lineNum,
 					Match: rule.Name,
 				})
+				break // Stop after first match
 			}
 		}
 		lineNum++
