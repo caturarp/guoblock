@@ -9,6 +9,9 @@ import (
 )
 
 func main() {
+	diffMode := flag.Bool("diff", false, "Scan only Git diff")
+	flag.Parse()
+
 	path := "."
 	if flag.NArg() > 0 {
 		path = flag.Arg(0)
@@ -17,7 +20,11 @@ func main() {
 	var findings []scanner.Finding
 	var err error
 
-	findings, err = scanner.ScanDirectory(path)
+	if *diffMode {
+		findings, err = scanner.ScanGitDiff()
+	} else {
+		findings, err = scanner.ScanDirectory(path)
+	}
 
 	if err != nil {
 		fmt.Println("❌ Error:", err)

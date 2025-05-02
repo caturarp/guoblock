@@ -9,6 +9,7 @@ guoblock is a CLI tool that helps to identify and block the accidental inclusion
 - **Secret scanning**: Detects secrets like AWS keys, Slack tokens, API keys, and more.
 - **Configurable**: Add custom rules through a simple YAML file.
 - **Ignore paths**: Skip specific directories (e.g., `vendor/`, `.git/`).
+- **Git diff mode**: Scan only the changes in a Git repository with the `--diff` flag.
 - **Exit codes**: Returns `0` for no secrets found, `1` for secrets found, and `2` for errors.
 
 ---
@@ -40,6 +41,11 @@ guoblock is a CLI tool that helps to identify and block the accidental inclusion
 ### Scan a Directory:
 ```bash
 guoblock ./path/to/scan
+```
+
+### Scan Git Diff (only changed files):
+```bash
+guoblock --diff
 ```
 
 ---
